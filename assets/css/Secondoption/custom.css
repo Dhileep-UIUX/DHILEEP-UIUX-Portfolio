@@ -51,6 +51,25 @@ body{
   } 
 }
 
+@include media-breakpoint-down(xxl) {
+  .img-test {
+    width: 300px !important;
+    height:auto !important;
+  }
+}
+@media (min-width: 1400px) { 
+  .img-test {
+    width: 335px !important;
+    height:380px !important;
+  } 
+}
+@media (max-width: 1400px) { 
+  .img-test {
+    width: 300px !important;
+    height:335px !important;
+  } 
+}
+
 @include media-breakpoint-only(xs) { ... }
 @include media-breakpoint-only(sm) { ... }
 @include media-breakpoint-only(md) { ... }
@@ -60,6 +79,44 @@ body{
 
 
 /*********************I am Header Animation CSS Start*************************/
+
+.img-test::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  clip-path: url(#cut-off-bottom);
+  background-image: url("/assets/image/dhileep-2.png");
+  background-size: cover;
+  transition: background 0.3s ease-in-out;
+}
+
+.img-test::after {
+  background-size: cover;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: url(#mask2);
+  transition: top 0.3s ease-in-out;
+  z-index: 2;
+  background-image: url("/assets/image/dhileep-2.png");
+  background-size: cover;
+}
+
+.img-test:hover::after {
+  top: -20px;
+}
+
+.img-test:hover::before {
+  background-position-y: -20px;
+} 
+
 .animation-text-box {
   height: 30px;
   width: 100%;
